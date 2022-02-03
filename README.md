@@ -1,12 +1,9 @@
-<h2>Name</h2>
-Steven Kyritsis
+# Heroku Setup
 
-<h2>Course + Section</h2>
-IT202-008
-
-<h2>Some fun facts:</h2>
-<ul>
-	<li>I love the outdoors even though I spend a lot of time inside coding for work.</li>
-	<li>I have a passion for music and cars and building PCs.</li>
-	<li>I started my career in tech in IT with a CCNA certificate in Routing and Switching and am now pursuing my education in CS.</li>
-</ul>
+- 08/30/2021 removed .htaccess and updated Procfile to use public_html as docroot
+- Profile tells Heroku how to deploy
+- Composer.json mentions what libraries will be used 
+- public_html contains all public facing content
+- partials will be templates/partial pages that will NOT be accessed directly (still can reference via code)
+- lib will be custom functions/libraries/etc that will NOT be accessed directly (still can be referenced via code)
+- All work will be subfolders inside public_html (for the most part), lib will contain reusable functionality, partials will contain reusable templates, nothing else should change.
