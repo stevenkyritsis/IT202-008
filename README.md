@@ -1,9 +1,9 @@
-# Project Name: (Which Project)
-## Project Summary: (Copy from proposal)
-## Github Link: (Prod Branch of Project Folder)
-## Project Board Link: 
-## Website Link: (Heroku Prod of Project folder)
-## Your Name:
+# Project Name: Simple Bank
+## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
+## Github Link: https://github.com/stevenkyritsis/IT202-008/tree/prod
+## Project Board Link: https://github.com/stevenkyritsis/IT202-008/projects/1
+## Website Link: https://dashboard.heroku.com/apps/sak76-prod
+## Your Name: Steven Kyritsis
 
 <!-- Line item / Feature template (use this for each bullet point) -- DO NOT DELETE THIS SECTION
 
@@ -17,7 +17,55 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-  - (duplicate template here for Milestone 1 features)  
+  - User will be able to register a new account
+    - Form Fields
+      - Username, email, password, confirm password(other fields optional)
+      - Email is required and must be validated
+      - Username is required
+      - Confirm password’s match
+    - Users Table
+      - Id, username, email, password (60 characters), created, modified
+      - Password must be hashed (plain text passwords will lose points)
+      - Email should be unique
+      - Username should be unique
+      - System should let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form
+        - The only fields that may be cleared are the password fields
+    - User will be able to login to their account (given they enter the correct credentials)
+      - Form
+        - User can login with email or username
+          - This can be done as a single field or as two separate fields
+        - Password is required
+      - User should see friendly error messages when an account either doesn’t exist or if passwords don’t match
+      - Logging in should fetch the user’s details (and roles) and save them into the session.
+      - User will be directed to a landing page upon login
+        - This is a protected page (non-logged in users shouldn’t have access)
+        - This can be home, profile, a dashboard, etc
+    - User will be able to logout
+      - Logging out will redirect to login page
+      - User should see a message that they’ve successfully logged out
+      - Session should be destroyed (so the back button doesn’t allow them access back in)
+    - Basic security rules implemented
+      - Authentication:
+        - Function to check if user is logged in
+        - Function should be called on appropriate pages that only allow logged in users
+      - Roles/Authorization:
+        - Have a roles table (see below)
+      - Basic Roles implemented
+        - Have a Roles table	(id, name, description, is_active, modified, created)
+        - Have a User Roles table (id, user_id, role_id, is_active, created, modified)
+        - Include a function to check if a user has a specific role (we won’t use it for this milestone but it should be usable in the future)
+      - Site should have basic styles/theme applied; everything should be styled
+        - I.e., forms/input, navigation bar, etc
+      - Any output messages/errors should be “user friendly”
+        - Any technical errors or debug output displayed will result in a loss of points
+      - User will be able to see their profile
+        - Email, username, etc
+      - User will be able to edit their profile
+        - Changing username/email should properly check to see if it’s available before allowing the change
+        - Any other fields should be properly validated
+        - Allow password reset (only if the existing correct password is provided)
+          - Hint: logic for the password check would be similar to login
+ 
 - Milestone 2
   - (duplicate template here for Milestone 1 features)
 - Milestone 3
@@ -49,7 +97,7 @@
      - A code snippet screenshot or reference via GitHub markdown may be used as an alternative for evidence that can't be captured on the screen
   4. Update the checklist of the proposal.md file for each feature this branch is completing (ideally should be 1 branch/pull request per feature, but some cases may have multiple)
     - Basically add an x to the checkbox markdown along with a date after
-      - (i.e.,   - [x] (mm/dd/yy) ....) See Template above
+- - (i.e.,   - [x] (mm/dd/yy) ....) See Template above
     - Add the pull request link as a new indented line for each line item being completed
     - Attach any related issue items on the right-side panel
   5. Merge the Feature Branch into your Milestone branch (this should close the pull request and the attached issues)
