@@ -20,7 +20,34 @@ require_once(__DIR__ . "/../../lib/functions.php");
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
-
+        let email = form.email.value;
+        let password = form.password.value;
+        let confirm = form.confirm.value;
+        let isValid = true;
+        if (email){
+            $email = $email.trim();
+        }
+        if (password){
+            $password = $password.trim();
+        }
+        if (confirm){
+            $confirm = $confirm.trim();
+        }
+        if (email.indexOf("@") === -1){
+            $isValid = false;
+            se("Invalid email");
+        }
+        if (!isset($email) || !isset($password) || !isset($confirm)){
+            $isValid = false;
+            se("Must provide email, password, and confirm password");
+        }
+        if (password !== confirm){
+            $isValid = false;
+            se("Passwords don't match");
+        }
+        if (strlen($password) < 3){
+            $isValid = false;
+        }
         return true;
     }
 </script>
