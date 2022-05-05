@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . "/../../lib/db.php");
+require_once(__DIR__ . "/../../partials/nav.php");
 ?>
 <form onsubmit="return validate(this)" method="POST">
     <div>
@@ -80,5 +80,16 @@ require_once(__DIR__ . "/../../lib/db.php");
         echo "Confirm must not be empty <br>";
         $hasError = true;
     }
- }
+    if (strlen($password) < 8) {
+        echo "Password too short";
+        $hasError = true;
+    }
+    if (strlen($password) > 0 && $password !== $confirm) {
+        echo "Passwords must match";
+        $hasError = true;
+    }
+    if (!$hasError) {
+        echo "Welcome, $email";
+    }
+}
 ?>
