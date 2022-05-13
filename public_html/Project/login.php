@@ -1,6 +1,9 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
+<link rel="stylesheet" href="/assets/styles.css" />
+<head><link rel="icon" type="image/x-icon" href="/assets/favicon.png" > </head>
+
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
@@ -10,14 +13,27 @@ require(__DIR__ . "/../../partials/nav.php");
         <label for="pw">Password</label>
         <input type="password" id="pw" name="password" required minlength="8" />
     </div>
-    <input type="submit" value="Login" />
+    <input type="submit" name="submit" value="Login" />
 </form>
 <script>
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
+        let email = form.email.value;
+        let password = form.password.value;
+        let isValid = true;
 
-        return true;
+        if(email){
+            email = email.trim();
+        }
+        if(password){
+            password = password.trim();
+        }
+        if (email.indexOf("@") === -1){
+            isValid = false;
+            alert("Invalid email");
+        }
+        return isValid;
     }
 </script>
 <?php

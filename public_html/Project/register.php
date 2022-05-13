@@ -1,6 +1,8 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
+<link rel="icon" type="image/x-icon" href="assets/favicon.png" > 
+<link rel="stylesheet" href="/assets/styles.css" />
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
@@ -20,8 +22,33 @@ require(__DIR__ . "/../../partials/nav.php");
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
+        let email = form.email.value;
+        let password = form.password.value;
+        let confirm = form.confirm.value;
+        let isValid = true;
 
-        return true;
+        if(email){
+            email = email.trim();
+        }
+        if(password){
+            password = password.trim();
+        }
+        if(confirm){
+            confirm = confirm.trim();
+        }
+        if (email.indexOf("@") === -1){
+            isValid = false;
+            alert("Invalid email");
+        }
+        if (password !== confirm){
+            isValid = false;
+            alert("Passwords don't match");
+        }
+        if (password.length < 3){
+            isValid = false;
+            alert("Password must be at least 3 characters.");
+        }
+        return isValid;
     }
 </script>
 <?php
