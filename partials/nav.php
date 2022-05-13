@@ -25,25 +25,42 @@ session_start();
 
 ?>
 <!-- include css and js files -->
-<link rel="stylesheet" href="<?php echo get_url('styles.css'); ?>">
+<link rel="stylesheet" href="<?php echo get_url('/../styles.css'); ?>">
 <script src="<?php echo get_url('helpers.js'); ?>"></script>
+
+<h1>
+    Steven's Simple Bank
+</h1>
 <nav>
-    <ul>
-        <?php if (is_logged_in()) : ?>
-            <li><a href="<?php echo get_url('home.php'); ?>">Home</a></li>
-            <li><a href="<?php echo get_url('profile.php'); ?>">Profile</a></li>
-        <?php endif; ?>
-        <?php if (!is_logged_in()) : ?>
-            <li><a href="<?php echo get_url('login.php'); ?>">Login</a></li>
-            <li><a href="<?php echo get_url('register.php'); ?>">Register</a></li>
-        <?php endif; ?>
-        <?php if (has_role("Admin")) : ?>
-            <li><a href="<?php echo get_url('admin/create_role.php'); ?>">Create Role</a></li>
-            <li><a href="<?php echo get_url('admin/list_roles.php'); ?>">List Roles</a></li>
-            <li><a href="<?php echo get_url('admin/assign_roles.php'); ?>">Assign Roles</a></li>
-        <?php endif; ?>
-        <?php if (is_logged_in()) : ?>
-            <li><a href="<?php echo get_url('logout.php'); ?>">Logout</a></li>
-        <?php endif; ?>
-    </ul>
+    <table> 
+        <td>
+            <button>
+                <a href="<?php echo get_url('/../index.php'); ?>"> Home </a>
+            </button>
+        </td>
+        <td>
+            <?php if (is_logged_in()) : ?>
+                <button><a href="<?php echo get_url('home.php'); ?>">Home</a></button>
+                <button><a href="<?php echo get_url('profile.php'); ?>">Profile</a></button>
+            <?php endif; ?>
+        </td>
+        <td> 
+            <?php if (!is_logged_in()) : ?>
+                <button><a href="<?php echo get_url('login.php'); ?>">Login</a></button>
+                <button><a href="<?php echo get_url('register.php'); ?>">Register</a></button>
+            <?php endif; ?>
+        </td>
+        <td>
+           <?php if (has_role("Admin")) : ?>
+                <button><a href="<?php echo get_url('admin/create_role.php'); ?>">Create Role</a></button>
+                <button><a href="<?php echo get_url('admin/list_roles.php'); ?>">List Roles</a></button>
+                <button><a href="<?php echo get_url('admin/assign_roles.php'); ?>">Assign Roles</a></button>
+            <?php endif; ?> 
+        </td>
+        <td>
+            <?php if (is_logged_in()) : ?>
+                <button><a href="<?php echo get_url('logout.php'); ?>">Logout</a></button>
+            <?php endif; ?>
+        </td>
+    </table>
 </nav>

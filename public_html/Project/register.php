@@ -1,6 +1,8 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
+<link rel="icon" type="image/x-icon" href="assets/favicon.png" > 
+<link rel="stylesheet" href="/assets/styles.css" />
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
@@ -38,11 +40,15 @@ require(__DIR__ . "/../../partials/nav.php");
             isValid = false;
             alert("Invalid email");
         }
-        if (password != confirm){
+        if (password !== confirm){
             isValid = false;
-            alert("");
+            alert("Passwords don't match");
         }
-        return true;
+        if (password.length < 3){
+            isValid = false;
+            alert("Password must be at least 3 characters.");
+        }
+        return isValid;
     }
 </script>
 <?php

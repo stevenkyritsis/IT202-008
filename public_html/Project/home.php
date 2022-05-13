@@ -1,6 +1,8 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
+<link rel="icon" type="image/x-icon" href="assets/favicon.png" > 
+<link rel="stylesheet" href="/assets/styles.css" />
 <h1>Home</h1>
 <?php
 if (is_logged_in()) {
